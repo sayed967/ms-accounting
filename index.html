@@ -12,11 +12,8 @@
       <div class="logo-mark">MS</div>
       <h1>أ. محمد سيد للاستشارات المحاسبية</h1>
       <p class="muted">إدارة العملاء، الشركات، الضرائب، الفواتير والمهام</p>
-      <input id="email" class="input" type="email" value="mohamed.accoun31@gmail.com" placeholder="البريد الإلكتروني" autocomplete="username" />
-      <div style="position:relative;margin-top:10px">
-        <input id="password" class="input" type="password" placeholder="كلمة المرور" autocomplete="current-password" style="padding-left:72px;pointer-events:auto!important;user-select:text!important" />
-        <button id="togglePassword" type="button" class="btn ghost" style="position:absolute;left:6px;top:50%;transform:translateY(-50%);padding:6px 9px">إظهار</button>
-      </div>
+      <input id="email" class="input" type="email" value="mohamed.accoun31@gmail.com" placeholder="البريد الإلكتروني" autocomplete="off" />
+      <input id="password" class="input" type="text" placeholder="اكتب كلمة المرور هنا" autocomplete="off" inputmode="text" spellcheck="false" style="margin-top:10px;pointer-events:auto!important;user-select:text!important;-webkit-user-select:text!important" />
       <button id="loginBtn" class="btn primary wide">تسجيل الدخول</button>
       <div id="loginMsg"></div>
       <footer>تصميم م. عادل للاتصال 01007400542</footer>
@@ -34,19 +31,5 @@
   </div>
   <div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle"></h3><button id="modalClose" class="btn ghost">إغلاق</button></div><div id="modalBody"></div></div></div>
   <script src="app.js"></script>
-  <script>
-    const passwordInput=document.getElementById('password');
-    passwordInput.disabled=false;
-    passwordInput.readOnly=false;
-    passwordInput.removeAttribute('readonly');
-    passwordInput.removeAttribute('disabled');
-    document.getElementById('togglePassword').onclick=()=>{
-      const show=passwordInput.type==='password';
-      passwordInput.type=show?'text':'password';
-      document.getElementById('togglePassword').textContent=show?'إخفاء':'إظهار';
-      passwordInput.focus();
-    };
-    setTimeout(()=>passwordInput.focus(),100);
-  </script>
 </body>
 </html>
