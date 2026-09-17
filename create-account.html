@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>إنشاء حساب</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="login-shell"><section class="card login-card">
+<h1>إنشاء حساب جديد</h1>
+<p class="muted">استخدم البريد وكلمة المرور الجديدة. بعد الإنشاء سيتم ضبط الصلاحيات من الإدارة.</p>
+<input id="email" class="input" type="email" placeholder="البريد الإلكتروني" />
+<input id="password" class="input" type="password" placeholder="كلمة المرور" />
+<button id="createBtn" class="btn primary wide">إنشاء الحساب</button>
+<div id="msg"></div>
+</section></div>
+<script>
+const B='https://gnawfgunhhjuivvropbh.supabase.co';
+const K='sb_publishable_kbNNZfG-2ZzDTfHtD3-jAw_6Nyli_93';
+const $=s=>document.querySelector(s);
+const out=(s,ok=false)=>{$('#msg').innerHTML=`<div class="msg ${ok?'ok':'err'}">${s}</div>`};
+$('#createBtn').onclick=async()=>{
+  const email=$('#email').value.trim().toLowerCase();
+  const password=$('#password').value;
+  if(!email||!password){out('اكتب البريد وكلمة المرور');return;}
+  try{
+    const r=await fetch(`${B}/auth/v1/signup`,{
+      method:'POST',
+      headers:{apikey:K,'Content-Type':'application/json'},
+      body:JSON.stringify({email,password,data:{full_name:'محمد سيد'}})
+    });
+    const j=await r.json();
+    if(!r.ok) throw new Error(j.msg||j.error_description||'تعذر إنشاء الحساب');
+    out('تم إنشاء الحساب. لو وصل بريد تأكيد افتحه ثم ارجع للنظام.',true);
+  }catch(e){out(e.message)}
+};
+</script>
+</body>
+</html>
