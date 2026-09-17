@@ -12,8 +12,8 @@
       <div class="logo-mark">MS</div>
       <h1>أ. محمد سيد للاستشارات المحاسبية</h1>
       <p class="muted">إدارة العملاء، الشركات، الضرائب، الفواتير والمهام</p>
-      <input id="email" class="input" type="email" value="sayed.account@proton.me" placeholder="البريد الإلكتروني" />
-      <input id="password" class="input" type="password" placeholder="كلمة المرور" />
+      <input id="email" class="input" type="email" value="mohamed.accoun31@gmail.com" placeholder="البريد الإلكتروني" autocomplete="username" />
+      <input id="password" class="input" type="password" placeholder="كلمة المرور" autocomplete="current-password" />
       <button id="loginBtn" class="btn primary wide">تسجيل الدخول</button>
       <div id="loginMsg"></div>
       <footer>تصميم م. عادل للاتصال 01007400542</footer>
@@ -30,6 +30,11 @@
     </div>
   </div>
   <div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle"></h3><button id="modalClose" class="btn ghost">إغلاق</button></div><div id="modalBody"></div></div></div>
+  <script>
+    sessionStorage.removeItem('ms_token');
+    const loginEmail=document.getElementById('email');
+    loginEmail.addEventListener('change',()=>{loginEmail.value=loginEmail.value.trim().toLowerCase();});
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
